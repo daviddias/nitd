@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="David Dias">
+  <title>Issue Tracker Dashboard</title>
+  <link href="css/issue-tracker.css" rel="stylesheet">
+</head>
+
+<body>
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+          <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#home">Node.js Issue Tracker</a>
+          </div>
+
+          <div class="collapse navbar-collapse navbar-ex1-collapse">
+              <ul class="nav navbar-nav">
+                  <li><a href="/about">What is this?</a>
+                  </li>
+              </ul>
+          </div>
+      </div>
+      <!-- /.container -->
+  </nav>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <p class="lead">Issues:</p>
+        <div class="list-group">
+            <a href="/" class="list-group-item active">untouched</a>
+            <a href="/" class="list-group-item">without label</a>
+            <a href="/" class="list-group-item">with no one assigned</a>
+            <a href="/" class="list-group-item">without milestone</a>
+            <a href="/" class="list-group-item">without comments</a>
+            <a href="/" class="list-group-item">without activity for 7 days</a>
+            <a href="/" class="list-group-item">without activity for 1 year</a>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        
+        <!-- Issues -->
+        {{#each issues}}
+        <div class="row">
+          <div class="col-sm-12 col-lg-12 col-md-12">
+            <div class="thumbnail">
+              <div class="caption">
+                <h4 class="pull-right"><a href="{{htmlUrl}}">#{{number}}</a></h4>
+                <h4><a href="{{htmlUrl}}">{{title}}</a></h4>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+
+  <script src="js/jquery-1.10.2.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
