@@ -18,7 +18,8 @@
     "model": "git://github.com/mde/model#daf6d78",
     "osenv": "0.0.3",
     "colors": "~0.6.2",
-    "request": "~2.34.0"
+    "request": "~2.34.0",
+    "cron": "~1.0.3"
   },
   "devDependencies": {
     "gaze": "~0.5.0",
