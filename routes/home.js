@@ -1,8 +1,14 @@
-var home     = require('./../resources').home;
-var server  = require('./../index.js');
+var untouched = require('./../resources').untouched;
+var server    = require('./../index.js');
 
 server.route(
   { method: 'GET',
     path: '/',
-    handler: home }
-  );
+    handler: untouched }
+);
+
+server.route(
+  { method: 'GET',
+    path: '/untouched',
+    handler: untouched }
+);

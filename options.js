@@ -12,6 +12,8 @@ module.exports = {
     engines: {
       html: 'handlebars'
     },
-    path: __dirname + '/views'
+    path: __dirname + '/views',
+    partialsPath: __dirname + '/views/partials',
+    helpersPath: __dirname + '/helpers',
   }
 };

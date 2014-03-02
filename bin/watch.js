@@ -16,7 +16,7 @@ var watch = [
 
 gaze(watch, watcher);
 
-function watcher(err, watcher) {
+function watcher(err, watcher_thing) {
   this.on('all', changed);
   console.log('watching'.green);
 }

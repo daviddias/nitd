@@ -15,12 +15,12 @@ function create(request, reply) {
         filtered.push(issues[i]);
       }
     }
-    // console.log(filtered);
-   
     var context = {
-      issues: filtered
+      issues: filtered,
+      a: 'active'
     };
-    reply.view('home', context);
+    reply.view('template', context);
+    // console.log(filtered[1]);
   }
 
 

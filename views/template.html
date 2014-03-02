@@ -37,13 +37,13 @@
       <div class="col-md-3">
         <p class="lead">Issues:</p>
         <div class="list-group">
-            <a href="/" class="list-group-item active">untouched</a>
-            <a href="/" class="list-group-item">without label</a>
-            <a href="/" class="list-group-item">with no one assigned</a>
-            <a href="/" class="list-group-item">without milestone</a>
-            <a href="/" class="list-group-item">without comments</a>
-            <a href="/" class="list-group-item">without activity for 7 days</a>
-            <a href="/" class="list-group-item">without activity for 1 year</a>
+            <a href="/" class="list-group-item {{a}}">untouched</a>
+            <a href="/" class="list-group-item {{b}}">without label</a>
+            <a href="/" class="list-group-item {{c}}">with no one assigned</a>
+            <a href="/" class="list-group-item {{d}}">without milestone</a>
+            <a href="/" class="list-group-item {{e}}">without comments</a>
+            <a href="/" class="list-group-item {{f}}">without activity for 7 days</a>
+            <a href="/" class="list-group-item {{g}}">without activity for 1 year</a>
         </div>
       </div>
 
@@ -54,16 +54,16 @@
         <div class="row">
           <div class="col-sm-12 col-lg-12 col-md-12">
             <div class="thumbnail">
-              <div class="caption">
-                <h4 class="pull-right"><a href="{{htmlUrl}}">#{{number}}</a></h4>
-                <h4><a href="{{htmlUrl}}">{{title}}</a></h4>
-              </div>
+              <h4 class="pull-right"><a href="{{htmlUrl}}">#{{number}}</a></h4>
+              <h4><a href="{{htmlUrl}}">{{title}}</a></h4>
+              <h5 class="pull-right">{{labelify labels}}</h5>
+              <h5>{{user.login}} | {{milestone.title}} | {{assignee.login}}</h5>
+              <p>{{truncate body}}</p>
             </div>
           </div>
         </div>
         <br />
         {{/each}}
-
       </div>
     </div>
   </div>
