@@ -8,3 +8,4 @@ dist/issue-tracker.js: assets/js/**/*.js assets/vendor/js/**/*.js
 
 clean:
 	rm -f public/js/issue-tracker.js public/css/issue-tracker.css
+

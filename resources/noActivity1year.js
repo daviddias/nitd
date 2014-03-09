@@ -1,3 +1,4 @@
+//TODO: Yet to be implemented, this is a copy of untouched.js code
 var Issue       = require('model').getModelByName('Issue');
 
 exports = module.exports = create;
