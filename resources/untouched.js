@@ -20,7 +20,7 @@ function create(request, reply) {
       a: 'active'
     };
     reply.view('template', context);
-    console.log(filtered[0]);
+    // console.log(filtered[0]);
   }
 
 

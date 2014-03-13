@@ -3,8 +3,8 @@ var withoutLabel = require('./../resources').withoutLabel;
 var noOneAssigned = require('./../resources').noOneAssigned;
 var noMilestone = require('./../resources').noMilestone;
 var noComments = require('./../resources').noComments;
-var noActivity7days = require('./../resources').noActivity7days;
-var noActivity1year = require('./../resources').noActivity1year;
+var noActivitySevenDays = require('./../resources').noActivitySevenDays;
+var noActivityOneYear = require('./../resources').noActivityOneYear;
 var server    = require('./../index.js');
 
 server.route(
@@ -39,14 +39,14 @@ server.route(
 
 server.route(
   { method: 'GET',
-    path: '/noActivity7days',
-    handler: noActivity7days}
+    path: '/noActivitySevenDays',
+    handler: noActivitySevenDays}
 );
 
 server.route(
   { method: 'GET',
-    path: '/noActivity1year',
-    handler: noActivity1year}
+    path: '/noActivityOneYear',
+    handler: noActivityOneYear}
 );
 
 server.route(

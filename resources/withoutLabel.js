@@ -20,6 +20,5 @@ function create(request, reply) {
       b: 'active'
     };
     reply.view('template', context);
-    // console.log('it works');
   }
 }
