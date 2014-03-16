@@ -18,7 +18,6 @@ var Issue = function () {
   this.property('closedAt','date');
   this.property('createdAt','date');
   this.property('updatedAt','date');
-  this.property('lastActivity', 'date');
 };
 
 model.register('Issue', Issue);

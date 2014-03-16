@@ -19,7 +19,7 @@ function create(request, reply) {
       d: 'active'
     };
     reply.view('template', context);
-    // console.log('testing');
+    //console.log(filtered[0]);
   }
 
 
