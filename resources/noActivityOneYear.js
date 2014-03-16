@@ -6,24 +6,25 @@ function create(request, reply) {
 
   Issue.all({}, gotIssues);
  
+  //no accounting for leap year (yet)
+  var oneYearInMilliseconds = 365 * 24 * 60 * 60 * 1000;
+  var oneYearAgo = new Date().getTime() - oneYearInMilliseconds;
+
   function gotIssues(err, issues) {
     var filtered = [];
 
     for (var i=0;i<issues.length;i++){
-      if(issues[i].labels.length === 0 &&
-        !issues[i].assignee && !issues[i].milestone) {
+      if(issues[i].updatedAt.getTime() < oneYearAgo){
         filtered.push(issues[i]);
       }
     }
     var context = {
       issues: filtered,
-      a: 'active'
+      g: 'active'
     };
     reply.view('template', context);
-    // console.log(filtered[0]);
+   
   }
 
-
-
-
 }
+

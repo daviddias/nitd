@@ -6,24 +6,26 @@ function create(request, reply) {
 
   Issue.all({}, gotIssues);
  
+  var sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000;
+  var sevenDaysAgo = new Date().getTime() - sevenDaysInMilliseconds;
+
   function gotIssues(err, issues) {
     var filtered = [];
 
+    
     for (var i=0;i<issues.length;i++){
-      if(issues[i].labels.length === 0 &&
-        !issues[i].assignee && !issues[i].milestone) {
+      console.log(issues[i].updatedAt);
+      if(issues[i].updatedAt.getTime() < sevenDaysAgo){
         filtered.push(issues[i]);
       }
     }
     var context = {
       issues: filtered,
-      a: 'active'
+      f: 'active'
     };
     reply.view('template', context);
-    // console.log(filtered[0]);
+    //console.log(filtered[0]);
   }
 
-
-
-
 }
+

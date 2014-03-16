@@ -105,7 +105,7 @@ function storeIssue(issue) {
         cleanIssue.pullRequest = issue.pull_request;
         cleanIssue.closedAt = issue.closed_at;
         cleanIssue.createdAt = issue.created_at;
-        cleanIssue.updatedAt = issue.updatedAt;
+        cleanIssue.updatedAt = issue.updated_at;
 
         var newIssue = Issue.create(cleanIssue);
         newIssue.save( function (err, data) {
