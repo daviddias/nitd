@@ -1,6 +1,6 @@
 module.exports = {
   cache: {
-    engine: 'memory'
+    engine: 'catbox-memory'
   },
   cors: true,
   state: {
