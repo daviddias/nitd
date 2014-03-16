@@ -94,6 +94,9 @@ function storeIssue(issue) {
           result[0].pullRequest = issue.pull_request;
           result[0].closedAt = issue.closed_at;
           result[0].createdAt = issue.created_at;
+          console.log('number: ', issue.number);
+          console.log('created at: ', issue.created_at);
+          console.log('updated at: ', issue.updated_at);
           result[0].updatedAt = issue.updated_at;
           result[0].lastActivity = parseRecentDate(body);
 
@@ -124,7 +127,7 @@ function storeIssue(issue) {
           cleanIssue.pullRequest = issue.pull_request;
           cleanIssue.closedAt = issue.closed_at;
           cleanIssue.createdAt = issue.created_at;
-          cleanIssue.updatedAt = issue.updatedAt;
+          cleanIssue.updatedAt = issue.updated_at;
           cleanIssue.lastActivity = parseRecentDate(body);
         
           //console.log(cleanIssue.lastActivity);
@@ -146,18 +149,19 @@ function storeIssue(issue) {
 //parses comments and returns the most recented date
 //which represents the last activity in the issue
 function parseRecentDate(comments) {
-  
   var date = 0;
-
-  if(comments.length === 2){ return null; }
+  if(comments.length === 2) { 
+    return null; 
+  }
 
   JSON.parse(comments).forEach(function (comment) {
-
     //change from ISO time format to date
     //console.log(comment.updated_at)
     var time = new Date(comment.updated_at);
-    time =   new Date( time.getTime() + ( time.getTimezoneOffset() * 60000 ) ).getTime();
-    if(date < time) { date = time; }
+    time = new Date( time.getTime() + ( time.getTimezoneOffset() * 60000 ) ).getTime();
+    if(date < time) { 
+      date = time; 
+    }
   });
 
   //console.log(date);
