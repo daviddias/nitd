@@ -8,7 +8,7 @@ var logger      = require('./modules/logger.js');
 // Run the first time
 fetchIssues();
 
-var port    = parseInt(process.env.PORT) || 8080;
+var port    = parseInt(process.env.PORT) || 9000;
 var server  = module.exports = new Hapi.Server(port, options);
 
 require('./routes');

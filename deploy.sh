@@ -1,1 +1,1 @@
-rsync -r * dashboardVM:issuetracker.daviddias.me
+rsync -r * dashboardVM:nitd
