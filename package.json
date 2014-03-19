@@ -16,7 +16,7 @@
   "dependencies": {
     "handlebars": "~1.3.0",
     "bunyan": "~0.22.1",
-    "level": "~0.18.0",
+    "level": "^0.18.0",
     "model": "git://github.com/mde/model#daf6d78",
     "osenv": "0.0.3",
     "colors": "~0.6.2",

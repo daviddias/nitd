@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
-<service_bundle type="manifest" name="dashboard">
-  <service name="site/dashboard" type="service" version="2">
+<service_bundle type="manifest" name="nitd">
+  <service name="site/nitd" type="service" version="5">
 
     <create_default_instance enabled="true"/>
 
@@ -16,7 +16,7 @@
     </dependency>
 
     
-    <method_context working_directory="/home/admin/dashboard">
+    <method_context working_directory="/home/admin/nitd">
       <method_credential user="admin" group="staff" privileges='basic,net_privaddr'  />
       <method_environment>
         <envvar name="PATH" value="/opt/local/bin:/opt/local/sbin:/usr/bin:/usr/sbin"/>
@@ -27,7 +27,7 @@
     <exec_method
       type="method"
       name="start"
-      exec="/opt/local/bin/node /home/admin/issue-tracker-dashboard/index.js"
+      exec="/opt/local/bin/node /home/admin/nitd/index.js"
       timeout_seconds="60"/>
 
     <exec_method
@@ -50,7 +50,7 @@
 
     <template>
       <common_name>
-        <loctext xml:lang="C">dashboard</loctext>
+        <loctext xml:lang="C">nitd</loctext>
       </common_name>
     </template>
 
