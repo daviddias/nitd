@@ -12,9 +12,14 @@ function create(request, reply) {
 
     for (var i = 0; i < issues.length; i++){
       if (issues[i].labels.length === 0){
-        filtered.push(issues[i])
+        filtered.push(issues[i]);
       }
     }
+
+    filtered.sort(function (issueA, issueB){
+      return issueA.number - issueB.number;
+    });
+
     var context = {
       issues: filtered,
       b: 'active'

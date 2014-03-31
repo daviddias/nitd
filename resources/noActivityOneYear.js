@@ -18,6 +18,11 @@ function create(request, reply) {
         filtered.push(issues[i]);
       }
     }
+
+    filtered.sort(function (issueA, issueB){
+      return issueA.number - issueB.number;
+    });
+    
     var context = {
       issues: filtered,
       g: 'active'
