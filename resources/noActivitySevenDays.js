@@ -11,8 +11,8 @@ function create(request, reply) {
 
   function gotIssues(err, issues) {
     var filtered = [];
+    var page = parseInt(request.query.page) || 1;
 
-    
     for (var i=0;i<issues.length;i++){
       console.log(issues[i].updatedAt);
       if(issues[i].updatedAt.getTime() < sevenDaysAgo){
@@ -25,8 +25,12 @@ function create(request, reply) {
     });
     
     var context = {
-      issues: filtered,
-      f: 'active'
+      issues: filtered.slice((page-1)*10,(page*10)-1),
+      f: 'active',
+      pagination: {
+          page: page,
+          pageCount: Math.ceil(filtered.length/10)
+      }
     };
     reply.view('template', context);
     //console.log(filtered[0]);

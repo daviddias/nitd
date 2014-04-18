@@ -7,6 +7,7 @@
   <meta name="description" content="">
   <meta name="author" content="David Dias">
   <title>Issue Tracker Dashboard</title>
+  <link href="css/bootstrap.css" rel="stylesheet">
   <link href="css/issue-tracker.css" rel="stylesheet">
 </head>
 
@@ -33,51 +34,56 @@
   </nav>
 
   <div class="container">
-    <div class="row">
-      <div class="col-md-3">
-        <p class="lead">Issues:</p>
-        <div class="list-group">
-            <a href="/untouched" class="list-group-item {{a}}">untouched</a>
-            <a href="/withoutLabel" class="list-group-item {{b}}">without label</a>
-            <a href="/noOneAssigned" class="list-group-item {{c}}">with no one assigned</a>
-            <a href="/noMilestone" class="list-group-item {{d}}">without milestone</a>
-            <a href="/noComments" class="list-group-item {{e}}">without comments</a>
-            <a href="/noActivitySevenDays" class="list-group-item {{f}}">without activity for 7 days</a>
-            <a href="/noActivityOneYear" class="list-group-item {{g}}">without activity for 1 year</a>
-        </div>
-      </div>
-
-      <div class="col-md-9">
-        
-        <!-- Issues -->
-        {{#each issues}}
-        <div class="row">
-          <div class="col-sm-12 col-lg-12 col-md-12">
-            <div class="thumbnail">
-              <h4 class="pull-right"><a href="{{htmlUrl}}">#{{number}}</a></h4>
-              <h4><a href="{{htmlUrl}}">{{title}}</a></h4>
-              <h5 class="pull-right">{{labelify labels}}</h5>
-              <h5>{{user.login}} | {{milestone.title}} | {{assignee.login}}</h5>
-              <p>{{truncate body}}</p>
-            </div>
+      <div class="row">
+          <div class="col-md-3">
+              <p class="lead">Issues:</p>
+              <div class="list-group">
+                  <a href="/untouched?page=1" class="list-group-item {{a}}">untouched</a>
+                  <a href="/withoutLabel?page=1" class="list-group-item {{b}}">without label</a>
+                  <a href="/noOneAssigned?page=1" class="list-group-item {{c}}">with no one assigned</a>
+                  <a href="/noMilestone?page=1" class="list-group-item {{d}}">without milestone</a>
+                  <a href="/noComments?page=1" class="list-group-item {{e}}">without comments</a>
+                  <a href="/noActivitySevenDays?page=1" class="list-group-item {{f}}">without activity for 7 days</a>
+                  <a href="/noActivityOneYear?page=1" class="list-group-item {{g}}">without activity for 1 year</a>
+              </div>
           </div>
-        </div>
-        <br />
-        {{/each}}
-      </div>
 
-      <div class="col-md-9 col-md-offset-3">
-        
-        <!-- Pagination -->
-        <div class="row">
-            <ul class="pager">
-                {{#if pagination.isFirstPage}}<li class="previous"><a href="?page={{pagination.previousPage}}" >&larr; Prev</a></li>{{/if}}
-                {{#if pagination.isLastPage}}<li class="next"><a href="?page={{pagination.nextPage}}">Next &rarr;</a></li>{{/if}}
-            </ul>
-        </div>
-        <br />
+          <div class="col-md-9">
+
+              <!-- Issues -->
+              {{#each issues}}
+              <div class="row">
+                  <div class="col-sm-12 col-lg-12 col-md-12">
+                      <div class="thumbnail">
+                          <h4 class="pull-right"><a href="{{htmlUrl}}">#{{number}}</a></h4>
+                          <h4><a href="{{htmlUrl}}">{{title}}</a></h4>
+                          <h5 class="pull-right">{{labelify labels}}</h5>
+                          <h5>{{user.login}} | {{milestone.title}} | {{assignee.login}}</h5>
+                          <p>{{truncate body}}</p>
+                      </div>
+                  </div>
+              </div>
+              <br />
+              {{/each}}
+
+              <div class="row">
+                  <div class="col-md-9 col-centered">
+                      <ul class="pagination col-centered">
+                          {{#paginate pagination type="previous"}}
+                          <li {{#if disabled}}class="disabled"{{/if}}><a href="?page={{n}}" >Prev</a></li>
+                          {{/paginate}}
+                          {{#paginate pagination type="middle" limit="12"}}
+                          <li {{#if active}}class="active"{{/if}}><a href="?page={{n}}">{{n}}</a></li>
+                          {{/paginate}}
+                          {{#paginate pagination type="next"}}
+                          <li {{#if disabled}}class="disabled"{{/if}}><a href="?page={{n}}">Next</a></li>
+                          {{/paginate}}
+                      </ul>
+                      <br />
+                  </div>
+              </div>
+          </div>
       </div>
-    </div>
   </div>
 
   <script src="js/jquery-1.10.2.js"></script>
