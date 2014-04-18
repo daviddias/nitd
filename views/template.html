@@ -65,6 +65,18 @@
         <br />
         {{/each}}
       </div>
+
+      <div class="col-md-9 col-md-offset-3">
+        
+        <!-- Pagination -->
+        <div class="row">
+            <ul class="pager">
+                {{#if pagination.isFirstPage}}<li class="previous"><a href="?page={{pagination.previousPage}}" >&larr; Prev</a></li>{{/if}}
+                {{#if pagination.isLastPage}}<li class="next"><a href="?page={{pagination.nextPage}}">Next &rarr;</a></li>{{/if}}
+            </ul>
+        </div>
+        <br />
+      </div>
     </div>
   </div>
 

@@ -8,6 +8,9 @@ function create(request, reply) {
  
   function gotIssues(err, issues) {
     var filtered = [];
+    var page = parseInt(request.query.page);
+    var totalPages = Math.ceil(filtered.lenght/10);
+    
 
     for (var i=0;i<issues.length;i++){
       if(issues[i].labels.length === 0 &&
@@ -15,21 +18,22 @@ function create(request, reply) {
         filtered.push(issues[i]);
       }
     }
-     
+
     filtered.sort(function (issueA, issueB){
       return issueA.number - issueB.number;
     });
 
-
     var context = {
-      issues: filtered,
-      a: 'active'
+      issues: filtered.slice((page-1)*10,(page*10)-1),
+      a: 'active',
+      pagination: {
+          previousPage: page-1,
+          nextPage: page+1,
+          isFirstPage: page != 1,
+          isLastPage: page != totalPages
+      }
     };
     reply.view('template', context);
-    // console.log(filtered[0]);
   }
-
-
-
 
 }
