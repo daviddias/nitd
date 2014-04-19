@@ -16,9 +16,15 @@ function create(request, reply) {
       }
     }
 
-    filtered.sort(function (issueA, issueB){
-      return issueA.number - issueB.number;
-    });
+    if(request.query.sort === 'asc') {
+        filtered.sort(function (issueA, issueB){
+            return issueA.number - issueB.number;
+        });
+    }else{
+        filtered.sort(function (issueA, issueB){
+            return issueB.number - issueA.number;
+        });
+    }
 
     var context = {
       issues: filtered.slice((page-1)*10,(page*10)-1),
