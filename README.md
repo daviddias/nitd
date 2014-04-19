@@ -1,6 +1,12 @@
-issue-tracker-dashboard
-=======================
+NITD - Node.js Issue Tracker Dashboard
+================
 
 
-## How to deploy
+
+
+## How to contribute
+
+## Contributors
+
+
 
