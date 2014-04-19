@@ -1,4 +1,5 @@
 var Issue       = require('model').getModelByName('Issue');
+var lib = require('./lib/lib.js');
 
 exports = module.exports = create;
 
@@ -20,16 +21,20 @@ function create(request, reply) {
       return issueA.number - issueB.number;
     });
 
+    //execute pagination
+    var nrPage = request.params.nrpage.slice(1);
+    paginationData = lib.issuesPagination(filtered, nrPage);
+
+    //console.log(paginationData);
 
     var context = {
-      issues: filtered,
-      a: 'active'
+      issues: paginationData.paginadedFiltered,
+      a: 'active',
+      nrPages: paginationData.nrMaxPages,
+      previousPageNr: paginationData.previousPageNr,
+      nextPageNr: paginationData.nextPageNr,
+      typeIssues: 'untouched'
     };
     reply.view('template', context);
-    // console.log(filtered[0]);
   }
-
-
-
-
 }

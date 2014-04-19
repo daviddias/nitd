@@ -12,24 +12,24 @@
 
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-          <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-              </button>
-              <a class="navbar-brand" href="#home">Node.js Issue Tracker</a>
-          </div>
-
-          <div class="collapse navbar-collapse navbar-ex1-collapse">
-              <ul class="nav navbar-nav">
-                  <li><a href="/about">What is this?</a>
-                  </li>
-              </ul>
-          </div>
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#home">Node.js Issue Tracker</a>
       </div>
+
+      <div class="collapse navbar-collapse navbar-ex1-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="/about">What is this?</a>
+          </li>
+        </ul>
+      </div>
+    </div>
   </nav>
 
   <div class="container">
@@ -37,18 +37,18 @@
       <div class="col-md-3">
         <p class="lead">Issues:</p>
         <div class="list-group">
-            <a href="/untouched" class="list-group-item {{a}}">untouched</a>
-            <a href="/withoutLabel" class="list-group-item {{b}}">without label</a>
-            <a href="/noOneAssigned" class="list-group-item {{c}}">with no one assigned</a>
-            <a href="/noMilestone" class="list-group-item {{d}}">without milestone</a>
-            <a href="/noComments" class="list-group-item {{e}}">without comments</a>
-            <a href="/noActivitySevenDays" class="list-group-item {{f}}">without activity for 7 days</a>
-            <a href="/noActivityOneYear" class="list-group-item {{g}}">without activity for 1 year</a>
+          <a href="/untouched" class="list-group-item {{a}}">untouched</a>
+          <a href="/withoutLabel" class="list-group-item {{b}}">without label</a>
+          <a href="/noOneAssigned" class="list-group-item {{c}}">with no one assigned</a>
+          <a href="/noMilestone" class="list-group-item {{d}}">without milestone</a>
+          <a href="/noComments" class="list-group-item {{e}}">without comments</a>
+          <a href="/noActivitySevenDays" class="list-group-item {{f}}">without activity for 7 days</a>
+          <a href="/noActivityOneYear" class="list-group-item {{g}}">without activity for 1 year</a>
         </div>
       </div>
 
       <div class="col-md-9">
-        
+
         <!-- Issues -->
         {{#each issues}}
         <div class="row">
@@ -65,11 +65,27 @@
         <br />
         {{/each}}
       </div>
+
+      <div>
+       <center>
+
+
+        {{#if previousPageNr}}
+        <a href="/{{typeIssues}}-{{previousPageNr}}"> <strong>Previous</strong> </a>({{previousPageNr}})      
+        {{/if}}
+        {{#if nextPageNr}}
+        <a href="/{{typeIssues}}-{{nextPageNr}}"><strong>Next </strong> </a> ({{nextPageNr}})
+        {{/if}}
+
+         out of {{nrPages}} pages.
+        <br>
+      </center>
     </div>
   </div>
+</div>
 
-  <script src="js/jquery-1.10.2.js"></script>
-  <script src="js/bootstrap.min.js"></script>
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

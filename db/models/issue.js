@@ -20,4 +20,12 @@ var Issue = function () {
   this.property('updatedAt','date');
 };
 
+
+var withoutLabelIssue = function() {
+  this.property('issue','object');
+  this.property('dirty','boolean');
+}
+
+
+model.register('withoutLabelIssue', withoutLabelIssue);
 model.register('Issue', Issue);

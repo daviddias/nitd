@@ -1,4 +1,5 @@
 var Issue = require('model').getModelByName('Issue');
+var lib = require('./lib/lib.js');
 
 exports = module.exports = create;
 
@@ -20,8 +21,12 @@ function create(request, reply) {
       return issueA.number - issueB.number;
     });
 
+    //execute pagination
+    var nrPage = request.params.nrpage.slice(1);
+    paginadedFiltered = lib.issuesPagination(filtered, nrPage);
+
     var context = {
-      issues: filtered,
+      issues: paginadedFiltered,
       b: 'active'
     };
     reply.view('template', context);

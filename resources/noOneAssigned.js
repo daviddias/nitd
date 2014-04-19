@@ -1,11 +1,13 @@
 var Issue       = require('model').getModelByName('Issue');
+var lib = require('./lib/lib.js');
 
 exports = module.exports = create;
 
 function create(request, reply) {
-
+  
   Issue.all({}, gotIssues);
  
+
   function gotIssues(err, issues) {
     var filtered = [];
 
@@ -18,16 +20,20 @@ function create(request, reply) {
     filtered.sort(function (issueA, issueB){
       return issueA.number - issueB.number;
     });
+
+
+    //execute pagination
+    var nrPage = request.params.nrpage.slice(1);
+    paginadedFiltered = lib.issuesPagination(filtered, nrPage);
     
     var context = {
-      issues: filtered,
+      issues: paginadedFiltered,
       c: 'active'
     };
+
+
+    //console.log(Object.keys(context.issues).length);
+
     reply.view('template', context);
-    //console.log(filtered[0]);
   }
-
-
-
-
 }

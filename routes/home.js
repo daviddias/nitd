@@ -9,49 +9,49 @@ var server    = require('./../index.js');
 
 server.route(
   { method: 'GET',
-    path: '/',
+    path: '/{nrpage?}',
     handler: untouched }
 );
 
 server.route(
   { method: 'GET',
-    path: '/untouched',
+    path: '/untouched{nrpage?}',
     handler: untouched }
 );
 
 server.route(
   { method: 'GET',
-    path: '/withoutLabel',
+    path: '/withoutLabel{nrpage?}',
     handler: withoutLabel}
 );
 
 server.route(
   { method: 'GET',
-    path: '/noMilestone',
+    path: '/noMilestone{nrpage?}',
     handler: noMilestone}
 );
 
 server.route(
   { method: 'GET',
-    path: '/noComments',
+    path: '/noComments{nrpage?}',
     handler: noComments}
 );
 
 server.route(
   { method: 'GET',
-    path: '/noActivitySevenDays',
+    path: '/noActivitySevenDays{nrpage?}',
     handler: noActivitySevenDays}
 );
 
 server.route(
   { method: 'GET',
-    path: '/noActivityOneYear',
+    path: '/noActivityOneYear{nrpage?}',
     handler: noActivityOneYear}
 );
 
 server.route(
   { method: 'GET',
-    path: '/noOneAssigned',
+    path: '/noOneAssigned{nrpage?}',
     handler: noOneAssigned}
 );
 
