@@ -5,8 +5,7 @@ var fetchIssues = require('./modules/fetchIssues.js');
 var worker        = require('./modules/worker.js');
 var logger      = require('./modules/logger.js');
 
-//Issues fectched once! #DBG
-//fetchIssues();
+fetchIssues();
 
 var port    = parseInt(process.env.PORT) || 9000;
 var server  = module.exports = new Hapi.Server(port, options);

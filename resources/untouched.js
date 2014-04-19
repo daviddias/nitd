@@ -25,16 +25,16 @@ function create(request, reply) {
     var nrPage = request.params.nrpage.slice(1);
     paginationData = lib.issuesPagination(filtered, nrPage);
 
-    //console.log(paginationData);
-
     var context = {
       issues: paginationData.paginadedFiltered,
       a: 'active',
-      nrPages: paginationData.nrMaxPages,
+      nrMaxPages: paginationData.nrMaxPages,
+      nrCurrentPage: paginationData.nrCurrentPage,
       previousPageNr: paginationData.previousPageNr,
       nextPageNr: paginationData.nextPageNr,
       typeIssues: 'untouched'
     };
+    
     reply.view('template', context);
   }
 }

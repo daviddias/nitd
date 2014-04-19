@@ -24,11 +24,17 @@ function create(request, reply) {
 
     //execute pagination
     var nrPage = request.params.nrpage.slice(1);
-    paginadedFiltered = lib.issuesPagination(filtered, nrPage);
+    paginationData = lib.issuesPagination(filtered, nrPage);
     
     var context = {
-      issues: paginadedFiltered,
-      c: 'active'
+      issues: paginationData.paginadedFiltered,
+      c: 'active',
+      nrMaxPages: paginationData.nrMaxPages,
+      nrCurrentPage: paginationData.nrCurrentPage,
+      nrPages: paginationData.nrMaxPages,
+      previousPageNr: paginationData.previousPageNr,
+      nextPageNr: paginationData.nextPageNr,
+      typeIssues: 'noOneAssigned'
     };
 
 

@@ -2,6 +2,7 @@
 
 function issuesPagination(filteredIssues, nrPage) {
   var MAX_ISSUES_PAGE = 10;
+
   var paginationData = {};
   var paginadedFilteredIssues = [];
   var firstNextEntry = nrPage*MAX_ISSUES_PAGE;
@@ -11,9 +12,9 @@ function issuesPagination(filteredIssues, nrPage) {
   paginationData.nextPageNr = parseInt(nrPage)+1;
 
   if(nrPage=='' || nrPage == '0') { 
-    nrPage = 0;
+    nrPage = 1;
     paginationData.nextPageNr = null;
-    paginationData.nextPageNr = 1;
+    paginationData.nextPageNr = 2;
   }
 
   for(var i = firstNextEntry; i<firstNextEntry+MAX_ISSUES_PAGE; i++) {
@@ -24,9 +25,10 @@ function issuesPagination(filteredIssues, nrPage) {
     paginadedFilteredIssues.push(filteredIssues[i]);
   }
 
+  paginationData.nrCurrentPage = nrPage;
   paginationData.nrMaxPages = nrMaxPages;
   paginationData.paginadedFiltered = paginadedFilteredIssues;
-  
+
   return paginationData;
 }
 

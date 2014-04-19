@@ -49,6 +49,8 @@
 
       <div class="col-md-9">
 
+        {{#if issues}}
+
         <!-- Issues -->
         {{#each issues}}
         <div class="row">
@@ -64,28 +66,32 @@
         </div>
         <br />
         {{/each}}
+
+        <ul class="pager">
+          {{#if previousPageNr}}
+          <li class="previous"><a href="/{{typeIssues}}-{{previousPageNr}}">&larr; Previous</a></li>
+          {{else}}
+          <li class="previous disabled"><a href="#">&larr; Previous </a></li>
+          {{/if}}        
+          <li>{{nrCurrentPage}} out of {{nrMaxPages}}</li>
+          {{#if nextPageNr}}
+          <li class="next"><a href="/{{typeIssues}}-{{nextPageNr}}">Next &rarr;</a></li>
+          {{else}}
+          <li class="next disabled"><a href="#">Next &rarr;</a></li>
+          {{/if}}
+        </ul>
+
+        {{else}}
+
+        <center><p>There are no issues listed in {{typeIssues}} category. Sweet!</p></center>
+
+        {{/if}}
       </div>
-
-      <div>
-       <center>
-
-
-        {{#if previousPageNr}}
-        <a href="/{{typeIssues}}-{{previousPageNr}}"> <strong>Previous</strong> </a>({{previousPageNr}})      
-        {{/if}}
-        {{#if nextPageNr}}
-        <a href="/{{typeIssues}}-{{nextPageNr}}"><strong>Next </strong> </a> ({{nextPageNr}})
-        {{/if}}
-
-         out of {{nrPages}} pages.
-        <br>
-      </center>
     </div>
   </div>
-</div>
 
-<script src="js/jquery-1.10.2.js"></script>
-<script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery-1.10.2.js"></script>
+  <script src="js/bootstrap.min.js"></script>
 </body>
 
 </html>

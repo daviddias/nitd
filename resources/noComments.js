@@ -22,11 +22,17 @@ function create(request, reply) {
 
         //execute pagination
     var nrPage = request.params.nrpage.slice(1);
-    paginadedFiltered = lib.issuesPagination(filtered, nrPage);
+    paginationData = lib.issuesPagination(filtered, nrPage);
     
     var context = {
-      issues: paginadedFiltered,
-      e: 'active'
+      issues: paginationData.paginadedFiltered,
+      e: 'active',
+      nrMaxPages: paginationData.nrMaxPages,
+      nrCurrentPage: paginationData.nrCurrentPage,
+      nrPages: paginationData.nrMaxPages,
+      previousPageNr: paginationData.previousPageNr,
+      nextPageNr: paginationData.nextPageNr,
+      typeIssues: 'noComments'
     };
     reply.view('template', context);
     //console.log(filtered[0]);

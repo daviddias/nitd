@@ -6,7 +6,7 @@ exports = module.exports = create;
 function create(request, reply) {
 
   Issue.all({}, gotIssues);
- 
+
   var sevenDaysInMilliseconds = 7 * 24 * 60 * 60 * 1000;
   var sevenDaysAgo = new Date().getTime() - sevenDaysInMilliseconds;
 
@@ -26,15 +26,21 @@ function create(request, reply) {
     });
 
         //execute pagination
-    var nrPage = request.params.nrpage.slice(1);
-    paginadedFiltered = lib.issuesPagination(filtered, nrPage);
-    
-    var context = {
-      issues: paginadedFiltered,
-      f: 'active'
-    };
+        var nrPage = request.params.nrpage.slice(1);
+        paginationData = lib.issuesPagination(filtered, nrPage);
 
-    reply.view('template', context);
+        var context = {
+          issues: paginationData.paginadedFiltered,
+          f: 'active',
+          nrMaxPages: paginationData.nrMaxPages,
+          nrCurrentPage: paginationData.nrCurrentPage,
+          nrPages: paginationData.nrMaxPages,
+          previousPageNr: paginationData.previousPageNr,
+          nextPageNr: paginationData.nextPageNr,
+          typeIssues: 'noActivitySevenDays'
+        };
+
+        reply.view('template', context);
     //console.log(filtered[0]);
   }
 
