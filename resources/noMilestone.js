@@ -8,6 +8,7 @@ function create(request, reply) {
  
   function gotIssues(err, issues) {
     var filtered = [];
+    var page = parseInt(request.query.page) || 1;
 
     for (var i=0;i<issues.length;i++){
       if(!issues[i].milestone) {
@@ -20,8 +21,12 @@ function create(request, reply) {
     });
 
     var context = {
-      issues: filtered,
-      d: 'active'
+      issues: filtered.slice((page-1)*10,(page*10)-1),
+      d: 'active',
+      pagination: {
+          page: page,
+          pageCount: Math.ceil(filtered.length/10)
+      }
     };
     reply.view('template', context);
     //console.log(filtered[0]);

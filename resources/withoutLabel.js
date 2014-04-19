@@ -9,6 +9,7 @@ function create(request, reply) {
   function gotIssues(err, issues) {
 
     var filtered = [];
+    var page = parseInt(request.query.page) || 1;
 
     for (var i = 0; i < issues.length; i++){
       if (issues[i].labels.length === 0){
@@ -21,8 +22,12 @@ function create(request, reply) {
     });
 
     var context = {
-      issues: filtered,
-      b: 'active'
+      issues: filtered.slice((page-1)*10,(page*10)-1),
+      b: 'active',
+      pagination: {
+          page: page,
+          pageCount: Math.ceil(filtered.length/10)
+      }
     };
     reply.view('template', context);
   }
