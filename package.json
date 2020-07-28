@@ -21,7 +21,7 @@
     "model": "git://github.com/mde/model#daf6d78",
     "osenv": "0.0.3",
     "colors": "~0.6.2",
-    "request": "~2.34.0",
+    "request": "~2.88.2",
     "cron": "~1.0.3",
     "hapi": "^3.0.0",
     "catbox": "^2.1.0"
